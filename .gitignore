@@ -39,3 +39,9 @@
 
 # debug information files
 *.dwo
+
+# Temporary build files
+**/.tmp/
+
+# Release artifacts (CLI binaries, etc.)
+/dist/
