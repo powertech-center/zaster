@@ -110,6 +110,18 @@ try {
     exit 1
 }
 
+# Write .gitattributes to keep LF line endings for vendored sources
+Set-Content -Path (Join-Path $libDir ".gitattributes") -Value "* text eol=lf`n" -NoNewline
+
+# Remove unneeded subdirectories from lib/
+$unneeded = @("legacy", "dictBuilder", "deprecated", "dll")
+foreach ($dir in $unneeded) {
+    $path = Join-Path $libDir $dir
+    if (Test-Path $path) {
+        Remove-Item -Recurse -Force $path
+    }
+}
+
 # Cleanup temp files
 Remove-Item -Force $tmpZip -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $tmpDir -ErrorAction SilentlyContinue
