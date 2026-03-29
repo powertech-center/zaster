@@ -44,12 +44,12 @@ dist/               — временная директория для рели�
 | `aarch64-apple-darwin` | macOS arm64 |
 | `x86_64-windows-msvc` | Windows x64, MSVC |
 | `aarch64-windows-msvc` | Windows arm64, MSVC |
-| `x86_64-windows-gnu` | Windows x64, псевдо-GNU (под капотом MSVC-инфраструктура) |
-| `aarch64-windows-gnu` | Windows arm64, псевдо-GNU (под капотом MSVC-инфраструктура) |
+| `x86_64-windows-gnu` | Windows x64, GNU (MinGW) |
+| `aarch64-windows-gnu` | Windows arm64, GNU (MinGW) |
 
 ## Кросскомпиляция
 
-Кросскомпиляция выполняется внутри Docker-образа `ghcr.io/powertech-center/alpine-cross-clang` — там уже есть компилятор Clang, все необходимые тулчейны и утилиты.
+Кросскомпиляция выполняется внутри Docker-образа `ghcr.io/powertech-center/alpine/cross-clang` — там уже есть компилятор Clang, все необходимые тулчейны и утилиты.
 
 ## Статические библиотеки
 

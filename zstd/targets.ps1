@@ -22,7 +22,7 @@ $CFLAGS_X64_WINDOWS_GNU   = "-O3 -DNDEBUG $MARCH_X64 $MTUNE_X64"
 $CFLAGS_ARM64_WINDOWS_GNU = "-O3 -DNDEBUG $MCPU_ARM64"
 
 # Default Docker image for cross-compilation
-$DEFAULT_IMAGE = "ghcr.io/powertech-center/alpine-cross-clang"
+$DEFAULT_IMAGE = "ghcr.io/powertech-center/alpine/cross-clang"
 
 class Target {
     [string] $target

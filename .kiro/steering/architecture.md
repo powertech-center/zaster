@@ -48,7 +48,7 @@ CMake-опция `ZASTER_LINK_ZSTD` (по умолчанию `ON`) управл�
 
 ## Сборка
 
-Компилятор: Clang (кросскомпиляция через `ghcr.io/powertech-center/alpine-cross-clang`).
+Компилятор: Clang (кросскомпиляция через `ghcr.io/powertech-center/alpine/cross-clang`).
 
 Многопоточная компрессия активируется флагом `-DZSTD_MULTITHREAD` + `-lpthread` (Linux/macOS) или WinAPI (Windows).
 
@@ -72,6 +72,11 @@ CGo не вызывает Makefile — компилирует `.c` файлы н
 Оба скрипта (`zstd/build.ps1` и `lib/build.ps1`) подключают его через `. "$PSScriptRoot/../zstd/targets.ps1"`.
 
 Результат сборки: `prebuilt/<таргет>/libzaster.a`.
+
+## Макросы инлайнинга
+
+- `ZASTER_INLINE` → `static inline` + атрибут. Для свободных функций в C-заголовках. `static` нужен, чтобы избежать конфликтов линковки при включении из нескольких `.c` файлов.
+- `ZASTER_ALWAYS_INLINE` → `inline` + атрибут (без `static`). Для методов C++ классов, где `static` меняет семантику (делает метод статическим, убирает `this`).
 
 ## Скрипты инфраструктуры
 

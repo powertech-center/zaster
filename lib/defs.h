@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#ifndef ZASTER_H
-#define ZASTER_H
+#ifndef ZASTER_DEFS_H
+#define ZASTER_DEFS_H
 
 /* =========================================================================
  * Common macros for all Zaster modules.
@@ -51,6 +51,16 @@
 #   define ZASTER_INLINE       static inline
 #   define ZASTER_NOINLINE
 #   define ZASTER_UNUSED
+#endif
+
+/* ZASTER_ALWAYS_INLINE — same as ZASTER_INLINE but without `static`.
+ * Use for C++ class member functions where `static` is invalid. */
+#if defined(__GNUC__) || defined(__clang__)
+#   define ZASTER_ALWAYS_INLINE inline __attribute__((always_inline))
+#elif defined(_MSC_VER)
+#   define ZASTER_ALWAYS_INLINE __forceinline
+#else
+#   define ZASTER_ALWAYS_INLINE inline
 #endif
 
 /* -------------------------------------------------------------------------
@@ -132,4 +142,4 @@ typedef uint8_t ZasterBool;
 #define ZASTER_FATAL(fmt, ...) \
     do { fprintf(stderr, "zaster: " fmt "\n", ##__VA_ARGS__); abort(); } while (0)
 
-#endif /* ZASTER_H */
+#endif /* ZASTER_DEFS_H */

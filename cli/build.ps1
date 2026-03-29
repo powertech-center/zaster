@@ -12,8 +12,8 @@ $CliTargetMap = [ordered]@{
     "linux-arm64"   = "aarch64-linux-musl"
     "macos-x64"     = "x86_64-apple-darwin"
     "macos-arm64"   = "aarch64-apple-darwin"
-    "windows-x64"   = "x86_64-windows-msvc"
-    "windows-arm64" = "aarch64-windows-msvc"
+    "windows-x64"   = "x86_64-windows-gnu"
+    "windows-arm64" = "aarch64-windows-gnu"
 }
 
 # Resolve CLI target names to full target triples
@@ -95,7 +95,7 @@ foreach ($group in $groups) {
         $objDir = "/repo/cli/.tmp/obj/$($t.target)"
         $outDir = "/repo/dist/$cliName"
         $srcDir = "/repo/cli"
-        $libDir = "/repo/libs/$($t.target)"
+        $libDir = "/repo/prebuilt/$($t.target)"
 
         # Determine output binary name
         $isWin = $t.target -match "windows"
